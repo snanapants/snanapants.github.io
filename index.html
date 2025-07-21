@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahana Pratap Simha - Intellectual Property Lawyer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: #2c3e50;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .expertise-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .expertise-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3498db;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: #95a5a6;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .publication {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .publication h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication .journal {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            border-bottom: none;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #3498db;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 1rem;
+            }
+            
+            .timeline {
+                padding-left: 1rem;
+            }
+            
+            .timeline-item::before {
+                left: -1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sahana Pratap Simha</h1>
+            <p class="subtitle">Intellectual Property Lawyer & Researcher</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Turin, Italy</span>
+                </div>
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:sahana.simha99@gmail.com">sahana.simha99@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <a href="https://linkedin.com/in/sahana-simha" target="_blank">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+39 351 4494220</span>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#expertise" class="nav-link">Expertise</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="about" class="section">
+                <h2>About Me</h2>
+                <p>I am a dedicated intellectual property lawyer and researcher with extensive experience in copyright, trademark, and emerging technology law. Currently pursuing my LL.M. in Intellectual Property at the University of Turin in collaboration with WIPO, I specialize in the intersection of artificial intelligence and intellectual property rights.</p>
+                
+                <p>My research focuses on adapting traditional IP frameworks to contemporary challenges, particularly in music licensing, AI-generated works, and gender disparities in creative sectors. With a strong background in both practical legal work and academic research, I bring a comprehensive understanding of intellectual property law to every project.</p>
+
+                <p>I am passionate about helping creators, innovators, and businesses navigate the complex landscape of intellectual property protection while staying at the forefront of legal developments in technology and creative industries.</p>
+            </section>
+
+            <section id="expertise" class="section">
+                <h2>Areas of Expertise</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card">
+                        <h3>Copyright Law</h3>
+                        <p>Extensive experience in copyright protection, music royalties, licensing agreements, and fair dealing provisions. Specialized knowledge in content licensing for entertainment industry.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>Trademark Law</h3>
+                        <p>Comprehensive trademark prosecution services including searches, applications, oppositions, and renewals. International trademark registration coordination across multiple jurisdictions.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>AI & Technology Law</h3>
+                        <p>Cutting-edge research and expertise in AI-generated works, liability frameworks for developers, and adapting IP law to technological innovations.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>Entertainment Law</h3>
+                        <p>Specialized experience in entertainment industry contracts, content licensing, production agreements, and legal risk mitigation for media companies.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>Legal Research & Writing</h3>
+                        <p>Published researcher with expertise in cross-disciplinary legal analysis, policy recommendations, and academic writing on complex IP issues.</p>
+                    </div>
+                    <div class="expertise-card">
+                        <h3>International IP Law</h3>
+                        <p>Deep understanding of EU IP harmonization, WIPO frameworks, and international intellectual property treaties and conventions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <h2>Professional Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Research Associate</h3>
+                        <div class="company">Indian Institute of Management Ahmedabad</div>
+                        <div class="date">January 2024 – December 2024</div>
+                        <p>Co-authored three groundbreaking research papers exploring cross-disciplinary intersections of copyright and trademark law, including work on trademark moral rights, gender disparities in creative sectors, and AI developer liability frameworks.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>Associate</h3>
+                        <div class="company">Quasar Legal (now QL Partners)</div>
+                        <div class="date">October 2022 – October 2023</div>
+                        <p>Conducted comprehensive trademark searches and managed full-cycle trademark prosecution. Drafted and reviewed various legal documents including licensing agreements, NDAs, and brand management contracts. Collaborated with international attorneys for global trademark registrations.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>Trainee Associate</h3>
+                        <div class="company">ANM Global</div>
+                        <div class="date">July 2022 – September 2022</div>
+                        <p>Prepared legal opinions on fair dealing provisions and drafted complex content licensing agreements for entertainment industry professionals including directors, artists, and producers. Conducted legal risk assessments for content based on real-life events.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>Legal Intern</h3>
+                        <div class="company">Zee Entertainment Enterprises Limited</div>
+                        <div class="date">December 2021 – April 2022</div>
+                        <p>Researched international advertising regulations for OTT platforms and personality rights frameworks. Assisted in drafting entertainment industry agreements and supported operational documentation for legal team.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications" class="section">
+                <h2>Publications & Research</h2>
+                
+                <div class="publication">
+                    <h3>Trademark Proprietor's 'Moral Right' as an Exception to the Doctrine of Exhaustion of Rights in Trademarks</h3>
+                    <div class="journal">American University Business Law Review – Intellectual Property Brief, Vol. 14, Issue 3 (May 2025)</div>
+                    <p>Co-authored research examining the intersection of moral rights theory with trademark exhaustion doctrine.</p>
+                </div>
+                
+                <div class="publication">
+                    <h3>Addressing Gender Disparities in Creative Sectors Using Incentive Frameworks under Copyright Law</h3>
+                    <div class="journal">European Intellectual Property Review, Issue 4 (March 2025)</div>
+                    <p>Comprehensive analysis of how copyright law can be leveraged to address gender inequality in creative industries.</p>
+                </div>
+                
+                <div class="publication">
+                    <h3>Through the Black Box: Adapting Collective Music Licensing in the EU to AI-Generated Works</h3>
+                    <div class="journal">LL.M. Research Paper, University of Turin (2024-2025)</div>
+                    <p>Current research exploring the challenges and solutions for music licensing in the age of artificial intelligence.</p>
+                </div>
+                
+                <div class="publication">
+                    <h3>A Critical Analysis of Copyright Law with Specific Reference to Music Royalties in India</h3>
+                    <div class="journal">Undergraduate Dissertation, CHRIST University (2022)</div>
+                    <p>Comprehensive analysis of India's copyright framework with focus on music industry royalty structures.</p>
+                </div>
+
+                <h3 style="margin-top: 2rem; color: #2c3e50;">Recent Speaking Engagements</h3>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li><strong>Panel Discussion on AI and Copyright</strong> - Intellectual Property Week, CHRIST University (February 2025)</li>
+                    <li><strong>Workshop on IP Licensing and Drafting</strong> - CHRIST University School of Law (September 2024)</li>
+                    <li><strong>IP Rights for Entrepreneurs Workshop</strong> - IEEE Computer Society Bangalore Chapter (September 2024)</li>
+                </ul>
+            </section>
+
+            <section id="education" class="section">
+                <h2>Education & Certifications</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>LL.M. in Intellectual Property</h3>
+                        <div class="company">University of Turin, WIPO, School of Management of Turin, COREP</div>
+                        <div class="date">September 2024 – August 2025</div>
+                        <p>Specialized master's program focusing on international intellectual property law with emphasis on emerging technologies and AI-generated works.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3>B.A., LL.B. (Hons.)</h3>
+                        <div class="company">CHRIST (Deemed to be University), Bengaluru</div>
+                        <div class="date">June 2017 – May 2022</div>
+                        <p>Graduated with cumulative GPA of 3.51/4. Specialized in intellectual property law with focus on copyright and entertainment law.</p>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem; color: #2c3e50;">Professional Certifications</h3>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li><strong>WIPO-IPOS Executive Programme</strong> - Intangible Asset Management (Full Scholarship, March 2024)</li>
+                    <li><strong>WIPO-UNIGE Summer School</strong> - Intellectual Property (June 2023)</li>
+                    <li><strong>CopyrightX</strong> - Harvard Law School & Berkman Klein Center (3.5/4, 2022)</li>
+                    <li><strong>WIPO Academy</strong> - General Course on Intellectual Property (83%, 2020)</li>
+                </ul>
+            </section>
+
+            <div class="cta-section">
+                <h2>Let's Work Together</h2>
+                <p>Whether you need assistance with intellectual property protection, licensing agreements, or research collaboration, I'm here to help navigate the complex world of IP law.</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </main>
+
+        <footer id="contact">
+            <h3 style="margin-bottom: 1rem;">Contact Information</h3>
+            <p><strong>Email:</strong> sahana.simha99@gmail.com</p>
+            <p><strong>Phone:</strong> +39 351 4494220 (Italy) | +91 89703 68888 (India)</p>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sahana-simha" style="color: #3498db;">linkedin.com/in/sahana-simha</a></p>
+            <p><strong>Location:</strong> Turin, Italy</p>
+            <p style="margin-top: 2rem; opacity: 0.8;">© 2025 Sahana Pratap Simha. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Update active link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section, footer');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (scrollY >= sectionTop) {
+                    current = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('.section, .timeline-item, .expertise-card, .publication').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
